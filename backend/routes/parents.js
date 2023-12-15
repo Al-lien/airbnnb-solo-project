@@ -3,6 +3,8 @@ const {
   getAllParents,
   getSingleParent,
   createParent,
+  updateParent,
+  deleteParent,
 } = require("../controllers/parentController");
 
 const router = express.Router();
@@ -13,12 +15,8 @@ router.get("/:id", getSingleParent);
 
 router.post("/", createParent);
 
-router.patch("/:id", (req, res) => {
-  res.json({ message: "UPDATE parents" });
-});
+router.patch("/:id", updateParent);
 
-router.delete("/:id", (req, res) => {
-  res.json({ message: "DELETE parents" });
-});
+router.delete("/:id", deleteParent);
 
 module.exports = router;

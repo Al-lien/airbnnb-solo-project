@@ -39,4 +39,42 @@ const createParent = async (req, res) => {
   }
 };
 
-module.exports = { getAllParents, getSingleParent, createParent };
+const updateParent = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such parent" });
+  }
+
+  const parent = await Parent.findByIdAndUpdate({ _id: id }, { ...req.body });
+
+  if (!parent) {
+    return res.status(400).json({ error: "No such parent" });
+  }
+
+  res.status(200).json(parent);
+};
+
+const deleteParent = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such parent" });
+  }
+
+  const parent = await Parent.findOneAndDelete({ _id: id });
+
+  if (!parent) {
+    return res.status(400).json({ error: "No such parent" });
+  }
+
+  res.status(200).json(parent);
+};
+
+module.exports = {
+  getAllParents,
+  getSingleParent,
+  createParent,
+  deleteParent,
+  updateParent,
+};
