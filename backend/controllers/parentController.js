@@ -75,6 +75,6 @@ module.exports = {
   getAllParents,
   getSingleParent,
   createParent,
-  deleteParent,
   updateParent,
+  deleteParent,
 };
