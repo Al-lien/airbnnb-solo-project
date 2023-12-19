@@ -5,11 +5,13 @@ import GeoBar from "../components/GeoBar";
 function HomeLayout() {
     return (
         <>
-            <GeoBar />
-            <main className="homepage">
-            <Outlet />
-            </main>
-            <Navbar />
+            <div className="homeLayout">
+                <GeoBar />
+                <main className="homepage">
+                    <Outlet />
+                </main>
+                <Navbar />
+            </div>
         </>
     );
 }
