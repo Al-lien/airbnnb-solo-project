@@ -1,7 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
+
 const mongoose = require("mongoose");
+
+// routes
 const parentsRoutes = require("./routes/parents");
 const childrenRoutes = require("./routes/children");
 const nurseriesRoutes = require("./routes/nurseries");

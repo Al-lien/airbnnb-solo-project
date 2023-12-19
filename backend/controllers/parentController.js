@@ -1,25 +1,34 @@
 const Parent = require("../models/parentsModel");
+
 const mongoose = require("mongoose");
 
+
 const getAllParents = async (req, res) => {
-  const parents = await Parent.find({}).sort({ createdAt: -1 });
-  res.status(200).json(parents);
+  try {
+    const parents = await Parent.find({}).sort({ createdAt: -1 });
+    res.status(200).json(parents);
+  } catch (error) {
+    return res.status(404).json({ error: "Can't find any parent" });
+  }
 };
 
 const getSingleParent = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such parent" });
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ error: "No such parent" });
+    }
+
+    const parent = await Parent.findById(id);
+    if (!parent) {
+      return res.status(404).json({ error: "No such parent" });
+    }
+
+    res.status(200).json(parent);
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
   }
-
-  const parent = await Parent.findById(id);
-
-  if (!parent) {
-    return res.status(404).json({ error: "No such parent" });
-  }
-
-  res.status(200).json(parent);
 };
 
 const createParent = async (req, res) => {
