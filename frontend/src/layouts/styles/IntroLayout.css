@@ -81,6 +81,7 @@
 .connect header {
   display: flex;
   justify-content: flex-end;
+  width: 90%;
 }
 
 .connect header div {

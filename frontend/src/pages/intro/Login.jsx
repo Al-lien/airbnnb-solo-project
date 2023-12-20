@@ -22,9 +22,9 @@ function Login() {
         <>
 
             <main className="connect">
-                {/* <header>
+                <header>
                     <div>pro</div>
-                </header> */}
+                </header>
                 <h3>Je me connecte</h3>
                 <form action="">
                     <input type="email" placeholder="Email" value={email}
