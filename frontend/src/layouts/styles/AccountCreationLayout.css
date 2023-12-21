@@ -1,0 +1,45 @@
+.accountCreationContainer {
+  background-color: white;
+  height: 100%;
+  padding: 1.25rem;
+}
+
+.accountCreationContainer h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #1d0042;
+}
+
+/* Create Account */
+
+.accountCreationContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.accountCreationContainer form input,
+.accountCreationContainer form button {
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.accountCreationContainer form input {
+  padding: 1rem 0.5rem;
+  background-color: #eee;
+  color: #999;
+}
+
+.accountCreationContainer form button {
+  cursor: pointer;
+  padding: 1.3rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-color: #882bff;
+  color: white;
+}
+
+.accountCreationContainer form input:focus {
+  color: black;
+}

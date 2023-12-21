@@ -1,9 +1,14 @@
 // components
 import { Outlet } from "react-router-dom";
 
-import "./styles/IntroLayout.css"
+// pages
 import Intro from "../pages/intro/Intro";
+
+// hooks
 import useScreenSize from "../hooks/useScreenSize";
+
+// styles
+import "./styles/IntroLayout.css"
 
 function IntroLayout() {
     const screenSize = useScreenSize()

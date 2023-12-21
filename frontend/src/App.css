@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&display=swap");
 #root {
   width: 100vw;
   height: 100vh;
@@ -13,12 +12,45 @@
     rgba(89, 84, 249, 0.9) 10%,
     rgba(227, 122, 204, 1) 100%
   );
+  overflow: hidden;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 3rem 0;
+  color: white;
+}
+
+.notFoundContainer div {
+  font-size: clamp(1rem, 4vw, 1.75rem);
+}
+
+.notFoundContainer img {
+  width: clamp(1rem, 80vw, 30rem);
+}
+
+.notFoundContainer button {
+  cursor: pointer;
+  padding: 1em;
+  margin-inline: auto;
+  width: clamp(250px, 70%, 350px);
+  font-size: 1.25em;
+  font-weight: 700;
+  background-color: #882bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  outline: none;
 }
 
 .geoBar,
