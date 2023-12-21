@@ -27,9 +27,9 @@ function Login() {
                 </header>
                 <h3>Je me connecte</h3>
                 <form action="">
-                    <input type="email" placeholder="Email" value={email}
+                    <input type="email" placeholder="Email" value={email} required
                         onChange={(e) => handleEmail(e.target.value)} />
-                    <input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" placeholder="Mot de passe" value={password} required onChange={(e) => setPassword(e.target.value)} />
                     <div className="check"><input type="checkbox" />Se souvenir de moi</div>
                     <button disabled={password && form ? false : true} className={password && form ? "submitButton" : "deadButton"}>Se connecter</button>
                 </form>

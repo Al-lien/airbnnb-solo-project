@@ -1,5 +1,5 @@
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin-inline: auto;
   display: flex;
   height: 100%;
@@ -75,7 +75,7 @@
 .introLayout .connect h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  padding: 5rem;
+  padding: 5rem 0;
 }
 
 .connect header {
