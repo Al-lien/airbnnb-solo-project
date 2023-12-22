@@ -1,13 +1,41 @@
 .accountCreationContainer {
   background-color: white;
   height: 100%;
-  padding: 1.25rem;
+  padding: 2rem 1.25rem;
+}
+
+.accountCreationLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.accountCreationLayout img {
+  width: 50%;
+}
+
+.accountCreationLayout > button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #eee;
+  color: #999;
+  padding: 0.25em 0.5em;
+}
+
+.createTitle {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .accountCreationContainer h2 {
   font-size: 1.75rem;
   font-weight: 500;
   color: #1d0042;
+  width: 100%;
 }
 
 /* Create Account */
@@ -15,6 +43,7 @@
 .accountCreationContainer form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .accountCreationContainer form input,
@@ -33,13 +62,43 @@
 
 .accountCreationContainer form button {
   cursor: pointer;
-  padding: 1.3rem 0.5rem;
-  font-size: 1.5rem;
+  width: 100%;
+  padding: 1em 0.5em;
+  font-size: 1.25rem;
   font-weight: 800;
   background-color: #882bff;
   color: white;
+  margin-top: 6rem;
 }
 
 .accountCreationContainer form input:focus {
   color: black;
+}
+
+.accountCreationContainer .check {
+  text-align: left;
+  margin: 0.25em 0;
+}
+
+.accountCreationContainer .check svg{
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+.accountCreationContainer .check .svgIsNotClicked {
+  fill: white;
+  filter: drop-shadow(0 1px 1px hsl(215, 41%, 21%, 0.35));
+}
+
+.accountCreationContainer .check .svgIsClicked {
+  fill: #50d3c4;
+}
+
+#walk,
+#disabilities {
+  display: none;
+}
+
+label {
+  cursor: pointer;
 }

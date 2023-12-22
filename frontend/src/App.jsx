@@ -28,6 +28,7 @@ import "./App.css";
 import "./App.mediaQueries.css"
 
 function App() {
+
   /* const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ function App() {
       )}
       <Route path="/accountcreation" element={<AccountCreationLayout />}>
         <Route index element={<CreateAccount />} />
-        <Route path="addchild" element={<AddChild />} />
+        <Route path="/accountcreation/addchild" element={<AddChild />} />
       </Route>
       <Route path="/home" element={<HomeLayout />}>
         <Route index element={<Home />} />

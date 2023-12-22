@@ -36,7 +36,7 @@
 }
 
 .notFoundContainer img {
-  width: clamp(1rem, 80vw, 30rem);
+  width: clamp(1rem, 80vw, 25rem);
 }
 
 .notFoundContainer button {

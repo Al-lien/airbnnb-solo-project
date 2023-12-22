@@ -3,19 +3,18 @@ import { Link } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
-  const [form, setForm] = useState(false);
+  const [passwordLength, setPasswordLength] = useState(false);
 
-  const validEmail = new RegExp(
+  const validEmailRegex = new RegExp(
     "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$"
   );
 
   function handleEmail(e) {
     setEmail(e);
-    if (validEmail.test(email)) {
-      return setForm(true);
-    }
+    setValidEmail(validEmailRegex.test(email));
   }
 
   function handlePasswords(firstPassword, secondPassword) {
@@ -50,19 +49,33 @@ function Signup() {
             value={secondPassword}
             onChange={(e) => setSecondPassword(e.target.value)}
           />
-          {firstPassword !== secondPassword && (
-            <p style={{ fontWeight: "700", fontSize: "1.25rem" }}>
-              Passwords don&apos;t match
-            </p>
-          )}
+          <p className={firstPassword == secondPassword && "matchingPassword"}>
+            Les mots de passe ne correspondent pas
+          </p>
+
+          <div className="passwordValidation">
+            <ul>
+              <small className={firstPassword.length >= 8 && "regexValid"}>
+                Veuillez écrire au minimun 8 caractères.
+              </small>
+              <small className={/[A-Z]/.test(firstPassword) && "regexValid"}>
+                Veuillez écrire au minimun une majuscule.
+              </small>
+
+              <small className={/[0-9]/.test(firstPassword) && "regexValid"}>
+                Veuillez écrire au minimun un chiffre.
+              </small>
+            </ul>
+          </div>
           <div>
             <input type="checkbox" />
             J&apos;accepte les conditions
           </div>
+
           <button
-            type="button"
+            type="submit"
             className={
-              form && handlePasswords(firstPassword, secondPassword)
+              validEmail && handlePasswords(firstPassword, secondPassword)
                 ? "submitButton"
                 : "deadButton"
             }

@@ -3,25 +3,23 @@ import { Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
-  const [form, setForm] = useState(false);
 
-  const validEmail = new RegExp(
+  const validEmailRegex = new RegExp(
     "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$" // regex correspond syntax email
   );
 
   function handleEmail(e) {
     setEmail(e);
-    if (validEmail.test(email)) {
-      setForm(true);
-    }
+    setValidEmail(validEmailRegex.test(email));
   }
 
   return (
     <>
       <main className="connect">
         <header>
-          <div>pro</div>
+          <button>pro</button>
         </header>
         <h3>Je me connecte</h3>
         <form action="">
@@ -40,13 +38,13 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className="check">
-            <input type="checkbox" />
-            Se souvenir de moi
+            <input type="checkbox" id="rememberMe"/>
+            <label htmlFor="rememberMe">Se souvenir de moi</label>
           </div>
           <button
-            type="button"
-            disabled={password && form ? false : true}
-            className={password && form ? "submitButton" : "deadButton"}
+            type="submit"
+            disabled={password && validEmail}
+            className={password && validEmail ? "submitButton" : "deadButton"}
           >
             Se connecter
           </button>

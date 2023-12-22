@@ -84,11 +84,22 @@
   width: 90%;
 }
 
-.connect header div {
+.connect header button {
+  cursor: pointer;
   border: 1px solid white;
+  background-color: transparent;
   border-radius: 15px;
   width: max-content;
   padding: 0.125rem 1.125rem;
+  opacity: 0.5;
+}
+
+.connect header button:hover {
+  opacity: 1;
+}
+
+.connect header button:active {
+  transform: translateY(2px);
 }
 
 .connect input {
@@ -100,8 +111,17 @@
   border-radius: 5px;
 }
 
+.connect input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
 .connect input:focus {
   outline: none;
+  color: #ffffff;
+}
+
+.connect input:valid {
   color: #ffffff;
 }
 
@@ -149,6 +169,10 @@ input[type="checkbox"] {
   transform: scale(1.0125);
 }
 
+.connect .submitButton:active {
+  transform: translateY(2px);
+}
+
 .connect a {
   font-size: 13px;
   color: #ffffff;
@@ -157,4 +181,23 @@ input[type="checkbox"] {
 
 .connect a span {
   font-weight: 700;
+}
+
+.passwordValidation {
+  width: 80%;
+  margin: 1em auto;
+}
+
+.passwordValidation ul {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.regexValid {
+  color: #00ff01;
+}
+
+.matchingPassword {
+  color: transparent;
 }
