@@ -125,8 +125,12 @@
   color: #ffffff;
 }
 
-.connect input:not(:last-child) {
+.connect input {
   width: 80%;
+}
+
+#rememberMe {
+  width: auto;
 }
 
 .connect .check {
