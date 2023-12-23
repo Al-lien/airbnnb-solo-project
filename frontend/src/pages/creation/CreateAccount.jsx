@@ -1,6 +1,7 @@
 import logo_creation from "../../assets/logo_creation_mask.svg";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import useSignup from "../../hooks/useSignup";
 
 function CreateAccount() {
   const [lastname, setLastname] = useState("");
@@ -8,35 +9,12 @@ function CreateAccount() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const [error, setError] = useState(null);
+  const { signup, error, isLoading } = useSignup();
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     const newParent = { lastname, firstname, email, address, phone };
-    console.log(newParent);
-    const response = await fetch("http://localhost:4000/api/parents", {
-      method: "POST",
-      body: JSON.stringify(newParent),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await response.json();
-
-    if (!response.ok) {
-      setError(json.error);
-    }
-
-    if (response.ok) {
-      setLastname("");
-      setFirstname("");
-      setEmail("");
-      setAddress("");
-      setPhone("");
-      setError(null);
-      console.log("New parent added", json);
-    }
+    await signup(newParent);
   }
 
   return (
@@ -83,7 +61,9 @@ function CreateAccount() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
-        <button type="submit">Enregrister mes informations</button>
+        <button disabled={isLoading} type="submit">
+          Enregrister mes informations
+        </button>
         {error && <div className="error">{error}</div>}
       </form>
     </>

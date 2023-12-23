@@ -1,7 +1,6 @@
-// check nothing
-export function testing(str) {
-  console.log(str);
-}
+// Keep you waiting
+export const waaait = () =>
+  new Promise((res) => setTimeout(res, Math.random() * 800));
 
 // check if input email match pattern
 export function checkEmailFormat(email) {
