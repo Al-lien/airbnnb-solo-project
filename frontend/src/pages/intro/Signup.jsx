@@ -7,11 +7,20 @@ function Signup() {
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    const newUser = { email, firstPassword };
+    setEmail("");
+    setFirstPassword("");
+    setSecondPassword("");
+    console.log(newUser);
+  }
+
   return (
     <>
       <main className="connect">
         <h3>Je m&apos;inscris</h3>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <input
             type="email"
             placeholder="Email"
