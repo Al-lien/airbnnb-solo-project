@@ -1,19 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { checkEmailFormat } from "../../helpers";
 
 function Login() {
   const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
-
-  const validEmailRegex = new RegExp(
-    "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$" // regex correspond syntax email
-  );
-
-  function handleEmail(e) {
-    setEmail(e);
-    setValidEmail(validEmailRegex.test(email));
-  }
 
   return (
     <>
@@ -28,7 +19,7 @@ function Login() {
             placeholder="Email"
             value={email}
             required
-            onChange={(e) => handleEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
@@ -38,13 +29,17 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className="check">
-            <input type="checkbox" id="rememberMe"/>
+            <input type="checkbox" id="rememberMe" />
             <label htmlFor="rememberMe">Se souvenir de moi</label>
           </div>
           <button
             type="submit"
-            disabled={password && validEmail}
-            className={password && validEmail ? "submitButton" : "deadButton"}
+            disabled={password && checkEmailFormat(email)}
+            className={
+              password && checkEmailFormat(email)
+                ? "submitButton"
+                : "deadButton"
+            }
           >
             Se connecter
           </button>

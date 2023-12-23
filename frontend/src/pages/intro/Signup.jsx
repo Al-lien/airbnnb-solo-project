@@ -1,30 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { checkEmailFormat, checkPasswordMatch } from "../../helpers";
 
 function Signup() {
   const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
-  const [passwordLength, setPasswordLength] = useState(false);
-
-  const validEmailRegex = new RegExp(
-    "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$"
-  );
-
-  function handleEmail(e) {
-    setEmail(e);
-    setValidEmail(validEmailRegex.test(email));
-  }
-
-  function handlePasswords(firstPassword, secondPassword) {
-    if (
-      (firstPassword !== "" || secondPassword !== "") &&
-      firstPassword === secondPassword
-    ) {
-      return true;
-    }
-  }
 
   return (
     <>
@@ -35,7 +16,7 @@ function Signup() {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => handleEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
@@ -49,33 +30,48 @@ function Signup() {
             value={secondPassword}
             onChange={(e) => setSecondPassword(e.target.value)}
           />
-          <p className={firstPassword == secondPassword && "matchingPassword"}>
+          <p
+            className={
+              firstPassword == secondPassword ? "matchingPassword" : undefined
+            }
+          >
             Les mots de passe ne correspondent pas
           </p>
 
           <div className="passwordValidation">
             <ul>
-              <small className={firstPassword.length >= 8 && "regexValid"}>
+              <small
+                className={firstPassword.length >= 8 ? "regexValid" : undefined}
+              >
                 Veuillez écrire au minimun 8 caractères.
               </small>
-              <small className={/[A-Z]/.test(firstPassword) && "regexValid"}>
+              <small
+                className={
+                  /[A-Z]/.test(firstPassword) ? "regexValid" : undefined
+                }
+              >
                 Veuillez écrire au minimun une majuscule.
               </small>
 
-              <small className={/[0-9]/.test(firstPassword) && "regexValid"}>
+              <small
+                className={
+                  /[0-9]/.test(firstPassword) ? "regexValid" : undefined
+                }
+              >
                 Veuillez écrire au minimun un chiffre.
               </small>
             </ul>
           </div>
           <div>
-            <input type="checkbox" />
+            <input type="checkbox" id="okToConditions" />
             J&apos;accepte les conditions
           </div>
 
           <button
             type="submit"
             className={
-              validEmail && handlePasswords(firstPassword, secondPassword)
+              checkEmailFormat(email) &&
+              checkPasswordMatch(firstPassword, secondPassword)
                 ? "submitButton"
                 : "deadButton"
             }

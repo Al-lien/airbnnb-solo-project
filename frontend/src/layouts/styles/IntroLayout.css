@@ -129,7 +129,8 @@
   width: 80%;
 }
 
-#rememberMe {
+#rememberMe,
+#okToConditions {
   width: auto;
 }
 
