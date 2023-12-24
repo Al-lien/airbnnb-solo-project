@@ -21,11 +21,9 @@ import NotFound from "./pages/NotFound";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
-/* import { useEffect, useState } from "react"; */
 
 // style
-import "./App.css";
-import "./App.mediaQueries.css"
+import "./App.scss";
 
 function App() {
 

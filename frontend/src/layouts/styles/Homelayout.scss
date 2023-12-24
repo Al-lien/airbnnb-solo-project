@@ -1,0 +1,72 @@
+.homeLayout {
+  .geoBar,
+  .primary-navbar {
+    position: absolute;
+    height: 80px;
+    width: 375px;
+    border: 1px solid black;
+    z-index: 1;
+    background-color: white;
+  }
+
+  .geoBar {
+    top: 0;
+  }
+
+  .primary-navbar {
+    bottom: 0;
+  }
+
+  .homepage {
+    padding-top: 80px;
+
+    .nurseryCard {
+      display: flex;
+      flex-direction: column;
+      margin-inline: auto;
+      height: 290px;
+      width: 340px;
+
+      .top,
+      .bottom {
+        display: inherit;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      .top {
+        color: white;
+        font-weight: 700;
+        font-size: 1.25rem;
+        background: no-repeat;
+        background-image: url("../../assets/nursery.jpg");
+        padding: 0.5rem;
+        border-radius: 10px 10px 0 0;
+
+        .grade {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 15px;
+          padding-inline: 0.25em;
+          font-size: 0.75rem;
+
+          &::after {
+            content: url("../../assets/star.svg");
+            content: url("/src/assets/star.svg");
+            width: 13px;
+            height: 15px;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .bottom {
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 0 0 10px 10px;
+      }
+    }
+  }
+}

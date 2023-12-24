@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 // styles
-import "./styles/AccountCreationLayout.css"
+import "./styles/AccountCreationLayout.scss"
 
 
 function AccountCreationLayout() {

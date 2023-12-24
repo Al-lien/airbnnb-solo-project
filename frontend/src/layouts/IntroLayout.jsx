@@ -8,7 +8,7 @@ import Intro from "../pages/intro/Intro";
 import useScreenSize from "../hooks/useScreenSize";
 
 // styles
-import "./styles/IntroLayout.css"
+import "./styles/IntroLayout.scss"
 
 function IntroLayout() {
     const screenSize = useScreenSize()

@@ -15,6 +15,11 @@ function CreateAccount() {
     e.preventDefault();
     const newParent = { lastname, firstname, email, address, phone };
     await signup(newParent);
+    setLastname("");
+    setFirstname("");
+    setEmail("");
+    setAddress("");
+    setPhone("");
   }
 
   return (
