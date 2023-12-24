@@ -69,6 +69,15 @@ function Signup() {
               >
                 Veuillez écrire au minimun un chiffre.
               </small>
+              <small
+                className={
+                  /[!@#$%^&*(),.?":{}|<>]/.test(firstPassword)
+                    ? "regexValid"
+                    : undefined
+                }
+              >
+                Veuillez écrire au minimun un caractère spécial.
+              </small>
             </ul>
           </div>
           <div>
