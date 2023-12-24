@@ -1,12 +1,20 @@
 .homeLayout {
+  background: linear-gradient(
+    145deg,
+    rgba(98, 113, 253, 0.2) 0%,
+    rgba(204, 121, 255, 0.2) 20%
+  );
+  overflow-x: scroll;
+  height: 100vh;
+
   .geoBar,
   .primary-navbar {
     position: absolute;
     height: 80px;
     width: 375px;
-    border: 1px solid black;
     z-index: 1;
     background-color: white;
+    filter: drop-shadow(0 1px 4px hsla(0, 0%, 0%, 0.25));
   }
 
   .geoBar {
@@ -15,6 +23,54 @@
 
   .primary-navbar {
     bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .emptyBlock {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(
+        145deg,
+        rgba(98, 113, 253, 0.2) 0%,
+        rgba(204, 121, 255, 0.2) 100%
+      );
+      top: 0;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    .icon {
+      height: 50px;
+      width: 50px;
+      padding: 10px;
+    }
+
+    .outline {
+      stroke: #dfdede;
+      transition: all 0.5s;
+
+      &-focus {
+        stroke: #882bff;
+      }
+    }
+    .solid {
+      fill: #dfdede;
+      transition: all 0.5s;
+
+      &-focus {
+        fill: #882bff;
+      }
+    }
   }
 
   .homepage {
@@ -26,6 +82,8 @@
       margin-inline: auto;
       height: 290px;
       width: 340px;
+      filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.05));
+      margin: 1rem auto;
 
       .top,
       .bottom {
@@ -33,39 +91,103 @@
         align-items: flex-end;
         justify-content: space-between;
         flex: 1;
+        padding: 1rem;
       }
 
       .top {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         color: white;
         font-weight: 700;
-        font-size: 1.25rem;
+        font-size: 1rem;
         background: no-repeat;
         background-image: url("../../assets/nursery.jpg");
-        padding: 0.5rem;
         border-radius: 10px 10px 0 0;
+
+        .favorite {
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+          width: max-content;
+          text-align: end;
+
+          .isNotFavorite {
+            fill: white;
+          }
+          .isFavorite {
+            fill: red;
+          }
+        }
+
+        .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
 
         .grade {
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 15px;
-          padding-inline: 0.25em;
+          padding: 0.25em 0.65em;
           font-size: 0.75rem;
+          background-color: #f53f62;
 
           &::after {
-            content: url("../../assets/star.svg");
             content: url("/src/assets/star.svg");
             width: 13px;
             height: 15px;
             margin-left: 5px;
+            color: #fff1dc;
           }
         }
       }
 
       .bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
         background-color: white;
-        padding: 0.5rem;
         border-radius: 0 0 10px 10px;
+
+        .nurseryInfo {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          text-align: left;
+
+          p {
+            color: #999999;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 1em;
+          }
+        }
+
+        .disponibilities {
+          display: grid;
+          width: 100%;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          grid-column-gap: 10px;
+          grid-row-gap: 10px;
+
+          > div {
+            color: white;
+            background-color: #32c766;
+            border-radius: 5px;
+            filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
+          }
+
+          .tuesday,
+          .saturday {
+            background-color: #d6d6d6;
+          }
+        }
       }
     }
   }
