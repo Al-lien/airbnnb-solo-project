@@ -1,7 +1,8 @@
 import logo_creation from "../../assets/logo_creation_mask.svg";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import useSignup from "../../hooks/useSignup";
+import useCreateParent from "../../hooks/useCreateParent";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 function CreateAccount() {
   const [lastname, setLastname] = useState("");
@@ -9,12 +10,13 @@ function CreateAccount() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const { signup, error, isLoading } = useSignup();
+  const { createParent, error, isLoading } = useCreateParent();
+  const { user } = useAuthContext();
 
   async function handleSubmit(e) {
     e.preventDefault();
     const newParent = { lastname, firstname, email, address, phone };
-    await signup(newParent);
+    await createParent(newParent);
     setLastname("");
     setFirstname("");
     setEmail("");
@@ -47,7 +49,7 @@ function CreateAccount() {
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder={user ? user.email : "Email"}
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}

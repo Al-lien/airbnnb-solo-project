@@ -26,24 +26,6 @@ import useScreenSize from "./hooks/useScreenSize";
 import "./App.scss";
 
 function App() {
-
-  /* const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:4000/api/parents");
-      const json = await response.json();
-
-      if (response.ok) {
-        setData(json);
-      }
-
-    }
-    fetchData();
-  }, [])
-
-  { data && console.log(data) } */
-
   const screenSize = useScreenSize();
 
   const routes = (

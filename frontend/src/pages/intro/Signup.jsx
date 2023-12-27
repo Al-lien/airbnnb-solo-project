@@ -1,20 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { checkEmailFormat, checkPasswordMatch } from "../../helpers";
+import { useSignup } from "../../hooks/useSignup";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
 
-  function handleSubmit(e) {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser = { email, firstPassword };
+    await signup(email, firstPassword);
     setEmail("");
     setFirstPassword("");
     setSecondPassword("");
-    console.log(newUser);
-  }
+    navigate("/accountcreation");
+  };
 
   return (
     <>
@@ -87,6 +91,7 @@ function Signup() {
 
           <button
             type="submit"
+            disabled={isLoading}
             className={
               checkEmailFormat(email) &&
               checkPasswordMatch(firstPassword, secondPassword)
@@ -96,6 +101,7 @@ function Signup() {
           >
             S&apos;inscrire
           </button>
+          {error && <div className="error">{error}</div>}
         </form>
         <Link to="/login">
           Vous avez déjà un compte ? <span>Se connecter</span>
