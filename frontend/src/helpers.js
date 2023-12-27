@@ -26,6 +26,7 @@ export function checkPasswordMatch(firstPassword, secondPassword) {
   }
 }
 
+// add or delete user from localstorage
 export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
