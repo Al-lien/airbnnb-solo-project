@@ -30,18 +30,21 @@ function Signup() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="Mot de passe"
             value={firstPassword}
             onChange={(e) => setFirstPassword(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="Confirmer le mot de passe"
             value={secondPassword}
             onChange={(e) => setSecondPassword(e.target.value)}
+            required
           />
           <p
             className={

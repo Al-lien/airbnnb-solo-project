@@ -1,8 +1,9 @@
 import logo_creation from "../../assets/logo_creation_mask.svg";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCreateParent from "../../hooks/useCreateParent";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 function CreateAccount() {
   const [lastname, setLastname] = useState("");
@@ -13,15 +14,29 @@ function CreateAccount() {
   const { createParent, error, isLoading } = useCreateParent();
   const { user } = useAuthContext();
 
+  const navigate = useNavigate();
+
+  const fetchUser = async () => {
+    const response = await fetch("http://localhost:4000/api/user/");
+    const json = await response.json();
+    const currentUser = await json.find(
+      (currentUser) => currentUser.email === user.email
+    );
+    return currentUser._id;
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
-    const newParent = { lastname, firstname, email, address, phone };
+    const user_id = await fetchUser();
+    const newParent = { user_id, lastname, firstname, email, address, phone };
+    console.log(newParent);
     await createParent(newParent);
     setLastname("");
     setFirstname("");
     setEmail("");
     setAddress("");
     setPhone("");
+    navigate("/addchild");
   }
 
   return (
@@ -51,7 +66,7 @@ function CreateAccount() {
           type="email"
           placeholder={user ? user.email : "Email"}
           required
-          value={email}
+          value={user ? user.email : email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
