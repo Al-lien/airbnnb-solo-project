@@ -1,18 +1,29 @@
+// react
+import { useState } from "react";
+
+// proptypes
+import { PropTypes } from "prop-types";
+
+// library
 import { UserIcon, BellIcon } from "@heroicons/react/24/solid";
 import {
   Squares2X2Icon,
   MagnifyingGlassIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
-import { useState } from "react";
 
-function Navbar() {
+function Navbar({ setLocation }) {
+  Navbar.propTypes = {
+    setLocation: PropTypes.func,
+  };
+
   const [select, setSelect] = useState(0);
   const [position, setPosition] = useState(0);
 
   function handleActive(e, i) {
     setPosition(e);
     setSelect(i);
+    setLocation(i);
   }
 
   return (

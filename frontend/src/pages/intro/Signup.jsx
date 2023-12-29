@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { checkEmailFormat, checkPasswordMatch } from "../../helpers";
 import { useSignup } from "../../hooks/useSignup";
 
@@ -9,15 +9,12 @@ function Signup() {
   const [secondPassword, setSecondPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(email, firstPassword);
     setEmail("");
     setFirstPassword("");
     setSecondPassword("");
-    navigate("/accountcreation");
   };
 
   return (

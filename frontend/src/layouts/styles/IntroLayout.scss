@@ -1,9 +1,9 @@
 .container {
-  padding-inline: 10vw;
-  margin-inline: auto;
   display: flex;
   justify-content: center;
   height: 100%;
+  padding-inline: 10vw;
+  margin-inline: auto;
   background: linear-gradient(
     145deg,
     rgba(71, 79, 255, 0.9) 0%,
@@ -42,26 +42,26 @@
 
   footer {
     position: absolute;
-    padding-inline: 2rem;
     width: 100%;
-    bottom: 2rem;
+    padding-inline: 2rem;
     text-align: end;
+    bottom: 2rem;
 
     a {
+      position: relative;
       color: white;
       text-decoration: none;
-      position: relative;
     }
 
     span {
-      color: white;
-      background-color: #882aff;
+      display: inline-block;
       height: 25px;
       width: 25px;
-      display: inline-block;
-      border-radius: 50%;
-      text-align: center;
       margin-inline: 1rem;
+      text-align: center;
+      color: white;
+      background-color: #882aff;
+      border-radius: 50%;
     }
   }
 
@@ -70,9 +70,9 @@
     width: clamp(300px, 100%, 400px);
 
     h3 {
+      padding: 5rem 0;
       font-size: 1.5rem;
       font-weight: 500;
-      padding: 5rem 0;
     }
 
     header {
@@ -82,11 +82,11 @@
 
       button {
         cursor: pointer;
-        border: 1px solid white;
-        background-color: transparent;
-        border-radius: 15px;
         width: max-content;
         padding: 0.125rem 1.125rem;
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 15px;
         opacity: 0.5;
 
         &:hover {
@@ -100,13 +100,13 @@
     }
 
     input {
-      border: 1px solid #ffffff;
-      background-color: transparent;
-      color: #ffffff50;
+      width: 100%;
       padding: 1rem;
       margin: 0.75em 0;
+      background-color: transparent;
+      color: #ffffff50;
+      border: 1px solid #ffffff;
       border-radius: 5px;
-      width: 100%;
 
       &::placeholder {
         color: white;
@@ -114,8 +114,8 @@
       }
 
       &:focus {
-        outline: none;
         color: #ffffff;
+        outline: none;
       }
 
       &:valid {
@@ -134,15 +134,15 @@
     button {
       cursor: pointer;
       width: 80%;
-      background-color: #882aff;
-      color: #ffffff;
-      opacity: 0.5;
-      border: none;
-      border-radius: 5px;
-      padding: 0.75em;
       margin: 1em 0 5em 0;
+      padding: 0.75em;
       font-size: 1.025rem;
       font-weight: 700;
+      color: #ffffff;
+      background-color: #882aff;
+      border: none;
+      border-radius: 5px;
+      opacity: 0.5;
       transition: all 0.2s;
     }
 
@@ -165,8 +165,8 @@
 
     a {
       font-size: 13px;
-      color: #ffffff;
       text-decoration: none;
+      color: #ffffff;
     }
 
     .passwordValidation {

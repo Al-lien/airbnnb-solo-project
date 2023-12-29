@@ -1,9 +1,22 @@
+// react
 import { createContext, useEffect, useReducer } from "react";
+
+// proptypes
+import PropTypes from "prop-types";
+
+// helpers function
 import { authReducer } from "../helpers";
 
+// context
 export const AuthContext = createContext();
 
+// contextProvider
 export const AuthContextProvider = ({ children }) => {
+  // 'children' can be any type of React node (not just an object).
+  AuthContextProvider.propTypes = {
+    children: PropTypes.node,
+  };
+
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
   });
@@ -13,6 +26,7 @@ export const AuthContextProvider = ({ children }) => {
 
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
+      
     }
   }, []);
 

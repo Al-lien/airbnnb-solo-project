@@ -1,38 +1,53 @@
 .homeLayout {
+  height: 100vh;
   background: linear-gradient(
     145deg,
     rgba(98, 113, 253, 0.2) 0%,
     rgba(204, 121, 255, 0.2) 20%
   );
   overflow-x: scroll;
-  height: 100vh;
 
   .geoBar,
   .primary-navbar {
     position: absolute;
-    height: 80px;
     width: 375px;
-    z-index: 1;
+    height: 80px;
     background-color: white;
     filter: drop-shadow(0 1px 4px hsla(0, 0%, 0%, 0.25));
+    z-index: 1;
   }
 
   .geoBar {
-    top: 0;
-  }
-
-  .primary-navbar {
-    bottom: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding-inline: 2em;
+    top: 0;
 
     button {
       cursor: pointer;
+      display: contents;
+      background-color: transparent;
+      border: none;
+
+      svg {
+        stroke: #882bff;
+      }
+    }
+  }
+
+  .primary-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 0;
+
+    button {
+      cursor: pointer;
+      position: relative;
       background-color: transparent;
       border: none;
       border-radius: 10px;
-      position: relative;
     }
 
     .emptyBlock {
@@ -44,14 +59,14 @@
         rgba(98, 113, 253, 0.2) 0%,
         rgba(204, 121, 255, 0.2) 100%
       );
-      top: 0;
       border-radius: 10px;
+      top: 0;
       transition: transform 0.2s;
     }
 
     .icon {
-      height: 50px;
       width: 50px;
+      height: 50px;
       padding: 10px;
     }
 
@@ -74,16 +89,16 @@
   }
 
   .homepage {
-    padding-top: 80px;
+    height: 100%;
+    padding: 80px 0;
 
     .nurseryCard {
       display: flex;
       flex-direction: column;
-      margin-inline: auto;
       height: 290px;
       width: 340px;
-      filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.05));
       margin: 1rem auto;
+      filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.05));
 
       .top,
       .bottom {
@@ -98,19 +113,19 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        color: white;
         font-weight: 700;
         font-size: 1rem;
+        color: white;
         background: no-repeat;
         background-image: url("../../assets/nursery.jpg");
         border-radius: 10px 10px 0 0;
 
         .favorite {
           cursor: pointer;
-          background-color: transparent;
-          border: none;
           width: max-content;
           text-align: end;
+          background-color: transparent;
+          border: none;
 
           .isNotFavorite {
             fill: white;
@@ -131,10 +146,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          border-radius: 15px;
           padding: 0.25em 0.65em;
           font-size: 0.75rem;
           background-color: #f53f62;
+          border-radius: 15px;
 
           &::after {
             content: url("/src/assets/star.svg");
@@ -161,20 +176,20 @@
           text-align: left;
 
           p {
-            color: #999999;
+            margin-bottom: 1em;
             font-weight: 500;
             font-size: 0.95rem;
-            margin-bottom: 1em;
+            color: #999999;
           }
         }
 
         .disponibilities {
           display: grid;
-          width: 100%;
           grid-template-columns: repeat(3, 1fr);
           grid-template-rows: repeat(2, 1fr);
           grid-column-gap: 10px;
           grid-row-gap: 10px;
+          width: 100%;
 
           > div {
             color: white;
@@ -188,6 +203,37 @@
             background-color: #d6d6d6;
           }
         }
+      }
+    }
+  }
+
+  .userAccountContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    min-height: 100%;
+    padding: 2em;
+    background-color: white;
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin: 1em 0;
+      font-size: 1.125rem;
+      background-color: transparent;
+      border: none;
+
+      svg {
+        margin-right: 1em;
+        fill: #882bff;
+        filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
       }
     }
   }

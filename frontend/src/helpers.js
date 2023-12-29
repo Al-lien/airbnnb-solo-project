@@ -37,3 +37,21 @@ export const authReducer = (state, action) => {
       return state;
   }
 };
+
+// fetch user ID
+export const fetchUser = async (user) => {
+  const response = await fetch("http://localhost:4000/api/user/");
+  const json = await response.json();
+  const currentUser = await json.find(
+    (currentUser) => currentUser.email === user.email
+  );
+  return currentUser._id;
+};
+
+
+// fetch parent 
+export const fetchParent = async () => {
+  const response = await fetch("http://localhost:4000/api/parents/");
+  const json = await response.json();
+  return json;
+};

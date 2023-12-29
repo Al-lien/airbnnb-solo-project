@@ -1,9 +1,16 @@
+// proptypes
+import { PropTypes } from "prop-types";
+
+// library
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 function NurseryCard({ nursery }) {
-  const { name, address, place_max } = nursery;
+  NurseryCard.propTypes = {
+    nursery: PropTypes.object,
+  };
 
+  const { name, address, place_max } = nursery;
   const [favorite, setFavorite] = useState(false);
 
   function handleFavorite() {

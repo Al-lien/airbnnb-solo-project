@@ -1,33 +1,34 @@
-import logo_creation from "../../assets/logo_creation_mask.svg";
-import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
-import useCreateParent from "../../hooks/useCreateParent";
+// react
+import { useState } from "react";
+
+// hooks
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { useParentContext } from "../../hooks/useParentContext";
+import useCreateParent from "../../hooks/useCreateParent";
+
+// helpers function
+import { fetchUser } from "../../helpers";
+
+// library
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+
+// assets
+import logo_creation from "../../assets/logo_creation_mask.svg";
 
 function CreateAccount() {
+  const { user } = useAuthContext();
+  const { parent } = useParentContext();
+  const { createParent, error, isLoading } = useCreateParent();
+
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const { createParent, error, isLoading } = useCreateParent();
-  const { user } = useAuthContext();
-
-  const navigate = useNavigate();
-
-  const fetchUser = async () => {
-    const response = await fetch("http://localhost:4000/api/user/");
-    const json = await response.json();
-    const currentUser = await json.find(
-      (currentUser) => currentUser.email === user.email
-    );
-    return currentUser._id;
-  };
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const user_id = await fetchUser();
+    const user_id = await fetchUser(user);
     const newParent = { user_id, lastname, firstname, email, address, phone };
     console.log(newParent);
     await createParent(newParent);
@@ -36,11 +37,11 @@ function CreateAccount() {
     setEmail("");
     setAddress("");
     setPhone("");
-    navigate("/addchild");
   }
 
   return (
     <>
+      {parent && <p>{parent.firstname}</p>}
       <div className="createTitle">
         <ChevronLeftIcon width={35} />
         <h2>Creation de compte</h2>
@@ -64,9 +65,9 @@ function CreateAccount() {
         />
         <input
           type="email"
-          placeholder={user ? user.email : "Email"}
+          placeholder={"Email"}
           required
-          value={user ? user.email : email}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
