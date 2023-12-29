@@ -9,7 +9,6 @@ import {
 
 // contexts
 import { useAuthContext } from "./hooks/useAuthContext";
-import { useParentContext } from "./hooks/useParentContext";
 
 // layouts
 import IntroLayout from "./layouts/IntroLayout";
@@ -34,7 +33,6 @@ import "./App.scss";
 function App() {
   const screenSize = useScreenSize();
   const { user } = useAuthContext();
-  const { parent } = useParentContext();
 
   const routes = (
     <>
@@ -58,12 +56,7 @@ function App() {
         </Route>
       )}
 
-      <Route
-        path="/accountcreation"
-        element={
-          !parent && user ? <AccountCreationLayout /> : <Navigate to="/home" />
-        }
-      >
+      <Route path="/accountcreation" element={<AccountCreationLayout />}>
         <Route index element={<CreateAccount />} />
         <Route path="/accountcreation/addchild" element={<AddChild />} />
       </Route>

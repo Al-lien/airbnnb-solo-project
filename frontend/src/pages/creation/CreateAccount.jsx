@@ -27,7 +27,7 @@ function CreateAccount() {
   const [phone, setPhone] = useState("");
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); 
     const user_id = await fetchUser(user);
     const newParent = { user_id, lastname, firstname, email, address, phone };
     console.log(newParent);

@@ -39,8 +39,7 @@ const childrenSchema = new Schema(
       required: true,
     },
     allergy: {
-      type: Boolean,
-      required: true,
+      type: String,
     },
   },
   { timestamps: true }

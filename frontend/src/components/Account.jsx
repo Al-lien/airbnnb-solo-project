@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // hooks
 import { useLogout } from "../hooks/useLogout";
 
@@ -23,8 +25,10 @@ function Account() {
             Vos Favoris
           </button>
           <button>
-            <UsersIcon width={30} />
-            Mon/Mes enfants
+            <Link to="/accountcreation/addchild">
+              <UsersIcon width={30} />
+              Mon/Mes enfants
+            </Link>
           </button>
         </div>
         <div className="logout">

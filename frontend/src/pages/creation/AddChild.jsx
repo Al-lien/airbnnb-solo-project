@@ -1,15 +1,29 @@
+// react-router-dom
 import { Link } from "react-router-dom";
-import logoAdd from "../../assets/logo_add_mask.svg";
-import { ChevronLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
+
+// react
 import { useState } from "react";
 
+// context
+import { useParentContext } from "../../hooks/useParentContext";
+
+// library
+import { ChevronLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
+
+// assets
+import logoAdd from "../../assets/logo_add_mask.svg";
+import useCreateChild from "../../hooks/useCreateChild";
+
 function AddChild() {
+  const { parent } = useParentContext();
   const [lastname, setlastname] = useState("");
   const [firstname, setfirstname] = useState("");
   const [birthday, setBirthday] = useState("");
   const [walking, setWalking] = useState(false);
   const [disabled, setDisable] = useState(false);
   const [allergy, setAllergy] = useState("");
+  const { createChild, error, isLoading } = useCreateChild();
+
 
   function handleWalking() {
     setWalking(!walking);
@@ -20,6 +34,7 @@ function AddChild() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const parent_id = await parent._id;
     const newChild = {
       parent_id,
       firstname,
@@ -30,6 +45,7 @@ function AddChild() {
       allergy,
     };
     console.log(newChild);
+    await createChild(newChild);
     setlastname("");
     setfirstname("");
     setBirthday("");
@@ -40,7 +56,9 @@ function AddChild() {
   return (
     <>
       <div className="createTitle">
-        <ChevronLeftIcon width={35} />
+        <Link to="/home">
+          <ChevronLeftIcon width={35} />
+        </Link>
         <h2>Ajouter un enfant</h2>
       </div>
 
@@ -71,7 +89,7 @@ function AddChild() {
         />
 
         <div className="check">
-          <input type="checkbox" id="walk" onClick={handleWalking} />
+          <input type="checkbox" id="walk" onChange={handleWalking} />
           <label htmlFor="walk">
             <CheckCircleIcon
               width={30}
@@ -82,7 +100,11 @@ function AddChild() {
         </div>
 
         <div className="check">
-          <input type="checkbox" id="disabilities" onClick={handleDisability} />
+          <input
+            type="checkbox"
+            id="disabilities"
+            onChange={handleDisability}
+          />
           <label htmlFor="disabilities">
             <CheckCircleIcon
               width={30}
@@ -98,9 +120,10 @@ function AddChild() {
           value={allergy}
           onChange={(e) => setAllergy(e.target.value)}
         />
-        <Link to="/accountcreation">
-          <button type="button">Enregistrer mon enfant</button>
-        </Link>
+        {error && <p>{error}</p>}
+        <button disabled={isLoading} type="submit">
+          Enregistrer mon enfant
+        </button>
       </form>
     </>
   );
