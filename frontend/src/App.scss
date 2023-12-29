@@ -17,13 +17,19 @@
 }
 
 .notFoundContainer {
+  height: 100%;
+  padding: 3rem 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
-  padding: 3rem 0;
   color: white;
+  background: linear-gradient(
+    145deg,
+    rgba(71, 79, 255, 0.9) 0%,
+    rgba(89, 84, 249, 0.9) 10%,
+    rgba(227, 122, 204, 1) 100%
+  );
 
   div {
     font-size: clamp(1rem, 4vw, 1.75rem);
@@ -35,15 +41,23 @@
 
   button {
     cursor: pointer;
-    padding: 1em;
-    margin-inline: auto;
     width: clamp(250px, 70%, 350px);
+    margin-inline: auto;
+    padding: 1em;
     font-size: 1.25em;
     font-weight: 700;
-    background-color: #882bff;
     color: white;
-    border-radius: 10px;
+    background-color: #882bff;
     border: none;
+    border-radius: 10px;
     outline: none;
   }
+}
+
+.error {
+  font-size: 1.5rem;
+  color: #e7195a;
+  background-color: #ffefef;
+  border: 5px double #e7195a;
+  border-radius: 10px;
 }

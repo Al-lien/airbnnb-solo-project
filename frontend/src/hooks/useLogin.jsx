@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-import { useNavigate } from "react-router-dom";
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
-  const navigate = useNavigate();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:4000/api/user/signup", {
+    const response = await fetch("http://localhost:4000/api/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -30,10 +28,10 @@ export const useSignup = () => {
 
       // update the authcontext
       dispatch({ type: "LOGIN", payload: json });
-      navigate("/accountcreation");
+
       setIsLoading(false);
     }
   };
 
-  return { signup, isLoading, error };
+  return { login, isLoading, error };
 };

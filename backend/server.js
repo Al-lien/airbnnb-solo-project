@@ -11,6 +11,8 @@ const childrenRoutes = require("./routes/children");
 const nurseriesRoutes = require("./routes/nurseries");
 const disponibilitiesRoutes = require("./routes/disponibilities");
 
+const userRoutes = require("./routes/user");
+
 // express app
 const app = express();
 
@@ -33,6 +35,8 @@ app.use("/api/parents", parentsRoutes);
 app.use("/api/children", childrenRoutes);
 app.use("/api/nurseries", nurseriesRoutes);
 app.use("/api/disponibilities", disponibilitiesRoutes);
+
+app.use("/api/user", userRoutes);
 
 // connect to db
 mongoose

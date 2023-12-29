@@ -1,8 +1,16 @@
+// react
 import { useEffect, useState } from "react";
+
+// react-router-dom
+import { useOutletContext } from "react-router-dom";
+
+// components
 import NurseryCard from "../../components/NurseryCard";
+import Account from "../../components/Account";
 
 function Home() {
   const [nurseries, setNurseries] = useState(null);
+  const [location] = useOutletContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +26,13 @@ function Home() {
 
   return (
     <>
-      {nurseries &&
+      {location === 0 &&
+        nurseries &&
         nurseries.map((nursery) => (
           <NurseryCard key={nursery._id} nursery={nursery} />
         ))}
+
+      {location === 2 && <Account />}
     </>
   );
 }

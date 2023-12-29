@@ -15,11 +15,11 @@
 
   > button {
     cursor: pointer;
+    padding: 0.25em 0.5em;
+    color: #999;
+    background-color: #eee;
     border: none;
     border-radius: 10px;
-    background-color: #eee;
-    color: #999;
-    padding: 0.25em 0.5em;
   }
 
   .createTitle {
@@ -32,15 +32,15 @@
 .accountCreationContainer {
   display: flex;
   justify-content: center;
-  background-color: white;
   height: 100%;
   padding: 2rem 1.25rem;
+  background-color: white;
 
   h2 {
+    width: 100%;
     font-size: 1.75rem;
     font-weight: 500;
     color: #1d0042;
-    width: 100%;
   }
 
   form {
@@ -51,15 +51,15 @@
     input,
     button {
       margin: 0.5rem 0;
-      border-radius: 10px;
       border: none;
+      border-radius: 10px;
       outline: none;
     }
 
     input {
       padding: 1rem 0.5rem;
-      background-color: #eee;
       color: #999;
+      background-color: #eee;
 
       &:focus {
         color: black;
@@ -69,22 +69,22 @@
     button {
       cursor: pointer;
       width: 100%;
+      margin-top: 6rem;
       padding: 1em 0.5em;
       font-size: 1.25rem;
       font-weight: 800;
-      background-color: #882bff;
       color: white;
-      margin-top: 6rem;
+      background-color: #882bff;
     }
   }
 
   .check {
-    text-align: left;
     margin: 0.25em 0;
+    text-align: left;
 
     svg {
-      vertical-align: middle;
       margin-right: 1rem;
+      vertical-align: middle;
     }
 
     .svgIsNotClicked {

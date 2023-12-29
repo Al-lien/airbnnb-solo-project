@@ -1,20 +1,37 @@
-import logo_creation from "../../assets/logo_creation_mask.svg";
-import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+// react
 import { useState } from "react";
-import useSignup from "../../hooks/useSignup";
+
+// hooks
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useParentContext } from "../../hooks/useParentContext";
+import useCreateParent from "../../hooks/useCreateParent";
+
+// helpers function
+import { fetchUser } from "../../helpers";
+
+// library
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+
+// assets
+import logo_creation from "../../assets/logo_creation_mask.svg";
 
 function CreateAccount() {
+  const { user } = useAuthContext();
+  const { parent } = useParentContext();
+  const { createParent, error, isLoading } = useCreateParent();
+
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const { signup, error, isLoading } = useSignup();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const newParent = { lastname, firstname, email, address, phone };
-    await signup(newParent);
+    const user_id = await fetchUser(user);
+    const newParent = { user_id, lastname, firstname, email, address, phone };
+    console.log(newParent);
+    await createParent(newParent);
     setLastname("");
     setFirstname("");
     setEmail("");
@@ -24,6 +41,7 @@ function CreateAccount() {
 
   return (
     <>
+      {parent && <p>{parent.firstname}</p>}
       <div className="createTitle">
         <ChevronLeftIcon width={35} />
         <h2>Creation de compte</h2>
@@ -47,7 +65,7 @@ function CreateAccount() {
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder={"Email"}
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}

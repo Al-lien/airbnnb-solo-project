@@ -2,7 +2,6 @@ const Parent = require("../models/parentsModel");
 
 const mongoose = require("mongoose");
 
-
 const getAllParents = async (req, res) => {
   try {
     const parents = await Parent.find({}).sort({ createdAt: -1 });
@@ -32,15 +31,18 @@ const getSingleParent = async (req, res) => {
 };
 
 const createParent = async (req, res) => {
-  const { firstname, lastname, address, phone, email } = req.body;
+  const { user_id, firstname, lastname, address, phone, email, password } =
+    req.body;
 
   try {
     const parent = await Parent.create({
+      user_id,
       firstname,
       lastname,
       address,
       phone,
       email,
+      password,
     });
     res.status(200).json(parent);
   } catch (error) {
