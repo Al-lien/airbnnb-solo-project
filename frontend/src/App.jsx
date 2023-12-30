@@ -19,9 +19,8 @@ import HomeLayout from "./layouts/HomeLayout";
 import Login from "./pages/intro/Login";
 import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
-import Home from "./pages/home/Home";
+import MainPage from "./pages/home/MainPage";
 import CreateAccount from "./pages/creation/CreateAccount";
-import AddChild from "./pages/creation/AddChild";
 import NotFound from "./pages/NotFound";
 
 // hooks
@@ -58,11 +57,10 @@ function App() {
 
       <Route path="/accountcreation" element={<AccountCreationLayout />}>
         <Route index element={<CreateAccount />} />
-        <Route path="/accountcreation/addchild" element={<AddChild />} />
       </Route>
 
       <Route path="/home" element={<HomeLayout />}>
-        <Route index element={user ? <Home /> : <Navigate to="/login" />} />
+        <Route index element={user ? <MainPage /> : <Navigate to="/login" />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

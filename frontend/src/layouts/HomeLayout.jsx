@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import GeoBar from "../components/GeoBar";
+import Topbar from "../components/Topbar";
 
 import "./styles/HomeLayout.scss";
 import { useState } from "react";
@@ -14,7 +14,7 @@ function HomeLayout() {
   return (
     <>
       <div className="homeLayout">
-        <GeoBar location={location} />
+        <Topbar location={location} />
         <main className="homepage">
           <Outlet context={[location]} />
         </main>

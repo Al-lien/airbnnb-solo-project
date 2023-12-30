@@ -1,0 +1,91 @@
+// AddChildren
+
+.addChildrenContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  background-color: white;
+  top: 0;
+  left: 100%;
+  transition: transform 0.3s;
+
+  .header {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+
+    img {
+      width: 10rem;
+      margin-left: 1.3rem;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      cursor: pointer;
+    }
+
+    input,
+    button {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 1rem 0.5rem;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input {
+      color: #999;
+      background-color: #eee;
+
+      &:focus {
+        color: black;
+      }
+    }
+
+    button {
+      cursor: pointer;
+      display: inline;
+      margin-top: 2rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: white;
+      background-color: #882bff;
+    }
+  }
+
+  .check {
+    margin: 0.25em 0;
+    text-align: left;
+
+    svg {
+      margin-right: 1rem;
+      vertical-align: middle;
+    }
+
+    .svgIsNotClicked {
+      fill: white;
+      filter: drop-shadow(0 1px 1px hsl(215, 41%, 21%, 0.35));
+    }
+
+    .svgIsClicked {
+      fill: #50d3c4;
+    }
+  }
+
+  #walk,
+  #disabilities {
+    display: none;
+  }
+}
+
+.addChildrenContainerNotHidden {
+  transform: translateX(-100%);
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.5));
+}

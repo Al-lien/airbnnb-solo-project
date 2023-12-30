@@ -4,6 +4,9 @@ import { useState } from "react";
 // proptypes
 import { PropTypes } from "prop-types";
 
+// style
+import "./styles/Navbar.scss";
+
 // library
 import { UserIcon, BellIcon } from "@heroicons/react/24/solid";
 import {

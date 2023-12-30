@@ -1,20 +1,30 @@
-// react-router-dom
-import { Link } from "react-router-dom";
+// proptypes
+import { PropTypes } from "prop-types";
 
 // react
 import { useState } from "react";
 
+// hooks
+import useCreateChild from "../hooks/useCreateChild";
+
 // context
-import { useParentContext } from "../../hooks/useParentContext";
+import { useParentContext } from "../hooks/useParentContext";
+
+// style
+import "./styles/AddChildren.scss";
 
 // library
 import { ChevronLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
 
 // assets
-import logoAdd from "../../assets/logo_add_mask.svg";
-import useCreateChild from "../../hooks/useCreateChild";
+import logoAdd from "../assets/logo_add_mask.svg";
 
-function AddChild() {
+function AddChildren({ addChildSectionHidden, setAddChildSectionHidden }) {
+  AddChildren.propTypes = {
+    addChildSectionHidden: PropTypes.bool,
+    setAddChildSectionHidden: PropTypes.func,
+  };
+
   const { parent } = useParentContext();
   const [lastname, setlastname] = useState("");
   const [firstname, setfirstname] = useState("");
@@ -24,13 +34,12 @@ function AddChild() {
   const [allergy, setAllergy] = useState("");
   const { createChild, error, isLoading } = useCreateChild();
 
-
-  function handleWalking() {
+  const handleWalking = () => {
     setWalking(!walking);
-  }
-  function handleDisability() {
+  };
+  const handleDisability = () => {
     setDisable(!disabled);
-  }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -51,19 +60,28 @@ function AddChild() {
     setBirthday("");
     setWalking("");
     setDisable("");
+    setAddChildSectionHidden(true);
   }
 
-  return (
-    <>
-      <div className="createTitle">
-        <Link to="/home">
-          <ChevronLeftIcon width={35} />
-        </Link>
-        <h2>Ajouter un enfant</h2>
-      </div>
+  const handleSection = () => {
+    setAddChildSectionHidden(!addChildSectionHidden);
+  };
 
-      <img src={logoAdd} alt="" />
-      <button type="button">Ajouter une photo</button>
+  return (
+    <div
+      className={
+        addChildSectionHidden
+          ? "addChildrenContainer"
+          : "addChildrenContainer addChildrenContainerNotHidden"
+      }
+    >
+      <div className="header">
+        <button className="createTitle" onClick={handleSection}>
+          <ChevronLeftIcon width={35} />
+        </button>
+
+        <img src={logoAdd} alt="" />
+      </div>
 
       <form action="" onSubmit={handleSubmit}>
         <input
@@ -125,8 +143,8 @@ function AddChild() {
           Enregistrer mon enfant
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
-export default AddChild;
+export default AddChildren;

@@ -1,0 +1,62 @@
+// Navbar
+
+.primary-navbar {
+  position: absolute;
+  width: 375px;
+  height: 80px;
+  background-color: white;
+  filter: drop-shadow(0 1px 4px hsla(0, 0%, 0%, 0.25));
+  z-index: 1;
+}
+
+.primary-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 0;
+
+  button {
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .emptyBlock {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(
+      145deg,
+      rgba(98, 113, 253, 0.2) 0%,
+      rgba(204, 121, 255, 0.2) 100%
+    );
+    border-radius: 10px;
+    top: 0;
+    transition: transform 0.2s;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .outline {
+    stroke: #dfdede;
+    transition: all 0.5s;
+
+    &-focus {
+      stroke: #882bff;
+    }
+  }
+  .solid {
+    fill: #dfdede;
+    transition: all 0.5s;
+
+    &-focus {
+      fill: #882bff;
+    }
+  }
+}

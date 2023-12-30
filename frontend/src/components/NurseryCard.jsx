@@ -1,6 +1,9 @@
 // proptypes
 import { PropTypes } from "prop-types";
 
+// styles
+import "./styles/NurseryCard.scss";
+
 // library
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";

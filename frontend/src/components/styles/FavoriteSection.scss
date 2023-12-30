@@ -1,0 +1,17 @@
+// FavoriteSection
+
+.favoriteSectionContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 2em;
+  background-color: white;
+  top: 0;
+  left: 100%;
+  transition: transform 0.3s;
+}
+
+.favoriteSectionNotHidden {
+  transform: translateX(-100%);
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.5));
+}
