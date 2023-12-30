@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useChildContext } from "../hooks/useChildContext";
 
 function useCreateChild() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const { dispatch } = useChildContext();
 
   const createChild = async (newChild) => {
     setIsLoading(true);
@@ -25,6 +27,7 @@ function useCreateChild() {
       setIsLoading(false);
       setError(null);
       console.log("New child added", json);
+      dispatch({ type: "CREATE_CHILDREN", payload: json });
     }
   };
   return { createChild, isLoading, error };

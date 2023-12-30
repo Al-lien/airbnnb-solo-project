@@ -13,6 +13,16 @@
   left: 100%;
   transition: transform 0.3s;
 
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .childList {
+    overflow-y: scroll;
+  }
+
   a {
     display: flex;
     align-items: center;

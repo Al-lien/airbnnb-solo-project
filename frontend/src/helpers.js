@@ -48,10 +48,25 @@ export const fetchUser = async (user) => {
   return currentUser._id;
 };
 
-
-// fetch parent 
+// fetch parent
 export const fetchParent = async () => {
   const response = await fetch("http://localhost:4000/api/parents/");
   const json = await response.json();
   return json;
+};
+
+// reload child list
+export const childrenReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_CHILDREN":
+      return {
+        children: action.payload,
+      };
+    case "CREATE_CHILDREN":
+      return {
+        children: [action.payload, ...state.children],
+      };
+    default:
+      return state;
+  }
 };
