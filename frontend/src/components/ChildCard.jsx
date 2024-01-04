@@ -5,6 +5,7 @@ import { PropTypes } from "prop-types";
 import "./styles/ChildCard.scss";
 
 function ChildCard({ child }) {
+  const { firstname, lastname, birthday, walking, disabled, allergy } = child;
   ChildCard.propTypes = {
     child: PropTypes.object,
   };
@@ -12,12 +13,12 @@ function ChildCard({ child }) {
   return (
     <article className="childCard">
       <p style={{ color: "red" }}>
-        {child.firstname} {child.lastname}
+        {firstname} {lastname}
       </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-        tenetur?
-      </p>
+      <p>est né le {birthday}</p>
+      <p>{walking ? "sait marcher" : "ne sait pas marcher"}</p>
+      <p>{disabled && "est porteur d'un handicap"}</p>
+      <p>{allergy && `est allergique : ${allergy}`}</p>
     </article>
   );
 }
