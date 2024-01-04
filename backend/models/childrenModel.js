@@ -27,7 +27,7 @@ const childrenSchema = new Schema(
       required: true,
     },
     birthday: {
-      type: Date,
+      type: String,
       required: true,
     },
     walking: {

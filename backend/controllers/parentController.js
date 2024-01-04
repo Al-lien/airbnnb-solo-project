@@ -31,7 +31,7 @@ const getSingleParent = async (req, res) => {
 };
 
 const createParent = async (req, res) => {
-  const { user_id, firstname, lastname, address, phone, email, password } =
+  const { user_id, firstname, lastname, address, phone, email } =
     req.body;
 
   try {
@@ -42,7 +42,6 @@ const createParent = async (req, res) => {
       address,
       phone,
       email,
-      password,
     });
     res.status(200).json(parent);
   } catch (error) {
