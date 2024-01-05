@@ -22,23 +22,23 @@ function ChildrenSection({ sectionChildrenHidden, setSectionChildrenHidden }) {
   };
 
   const { children, dispatch } = useChildContext();
-/*   const { parent } = useParentContext(); */
+  const { parent } = useParentContext();
   const [addChildSectionHidden, setAddChildSectionHidden] = useState(true);
 
   useEffect(() => {
     const fetchChild = async () => {
       const response = await fetch("http://localhost:4000/api/children");
       const json = await response.json();
-      /* const userChild = await json.find(
+      const userChild = await json.filter(
         (child) => child.parent_id === parent._id
-      ); */
+      );
 
       if (response.ok) {
-        dispatch({ type: "SET_CHILDREN", payload: json });
+        dispatch({ type: "SET_CHILDREN", payload: userChild });
       }
     };
     fetchChild();
-  }, [dispatch]);
+  }, [dispatch, parent._id]);
 
   const handleSection = () => {
     setSectionChildrenHidden(!sectionChildrenHidden);
