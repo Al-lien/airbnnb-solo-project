@@ -1,0 +1,56 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+function Nursery() {
+  let { nurseryId } = useParams();
+  const [nurseryData, setNurseryData] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchNursery = async () => {
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/nurseries/${nurseryId}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const json = await response.json();
+        setNurseryData(json);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNursery();
+  }, [nurseryId]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!nurseryData) {
+    return null; // or some fallback content if you prefer
+  }
+
+  return (
+    <>
+      <h1>Welcome to {nurseryData.name}</h1>
+      <p>Here is the nursery {nurseryId}</p>
+    </>
+  );
+}
+
+export default Nursery;

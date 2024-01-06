@@ -28,6 +28,7 @@ import useScreenSize from "./hooks/useScreenSize";
 
 // style
 import "./App.scss";
+import Nursery from "./pages/home/Nursery";
 
 function App() {
   const screenSize = useScreenSize();
@@ -61,6 +62,7 @@ function App() {
 
       <Route path="/home" element={<HomeLayout />}>
         <Route index element={user ? <MainPage /> : <Navigate to="/login" />} />
+        <Route path="nursery/:nurseryId" element={<Nursery />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
