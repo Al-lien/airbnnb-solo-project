@@ -1,11 +1,16 @@
+// react
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
+// react-router
+import { useNavigate, useParams } from "react-router-dom";
 
 function Nursery() {
   let { nurseryId } = useParams();
   const [nurseryData, setNurseryData] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNursery = async () => {
@@ -48,7 +53,16 @@ function Nursery() {
   return (
     <>
       <h1>Welcome to {nurseryData.name}</h1>
-      <p>Here is the nursery {nurseryId}</p>
+      <div className="calendar">Calendar</div>
+      <div className="date">Date</div>
+      <button
+        type="button"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Cancel
+      </button>
     </>
   );
 }

@@ -1,5 +1,10 @@
+// react
 import { useEffect, useState } from "react";
+
+// react-router
 import { Link, useOutletContext } from "react-router-dom";
+
+// components
 import NurseryCard from "../../components/NurseryCard";
 import Account from "../../components/Account";
 
@@ -7,7 +12,7 @@ function Home() {
   const [nurseries, setNurseries] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [location] = useOutletContext();
+  const { location } = useOutletContext();
 
   useEffect(() => {
     const fetchData = async () => {

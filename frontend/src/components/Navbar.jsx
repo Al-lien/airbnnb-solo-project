@@ -4,6 +4,9 @@ import { useState } from "react";
 // proptypes
 import { PropTypes } from "prop-types";
 
+// react-router
+import { useNavigate } from "react-router-dom";
+
 // style
 import "./styles/Navbar.scss";
 
@@ -23,10 +26,13 @@ function Navbar({ setLocation }) {
   const [select, setSelect] = useState(0);
   const [position, setPosition] = useState(0);
 
+  const navigate = useNavigate();
+
   function handleActive(e, i) {
     setPosition(e);
     setSelect(i);
     setLocation(i);
+    navigate("/home");
   }
 
   return (
